@@ -1,7 +1,8 @@
-package com.berker.cryptoberker
+package com.berker.cryptoberker.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.berker.cryptoberker.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
