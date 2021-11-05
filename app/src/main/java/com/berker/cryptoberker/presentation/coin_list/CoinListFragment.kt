@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.berker.cryptoberker.R
 import com.berker.cryptoberker.common.BaseFragment
 import com.berker.cryptoberker.databinding.FragmentCoinListBinding
@@ -36,9 +37,9 @@ class CoinListFragment : BaseFragment<FragmentCoinListBinding>() {
         lifecycleScope.launchWhenCreated {
             viewModel.state.collectLatest {
                 if (it.isLoading) {
-                    binding.loading.visibility = View.VISIBLE
+                    binding.ltLoadingAnimation.visibility = View.VISIBLE
                 } else {
-                    binding.loading.visibility = View.GONE
+                    binding.ltLoadingAnimation.visibility = View.GONE
                 }
                 if (it.coins.isNotEmpty()) {
                     initRecyclerView(it.coins)
@@ -49,7 +50,9 @@ class CoinListFragment : BaseFragment<FragmentCoinListBinding>() {
 
     private fun initRecyclerView(itemList: List<Coin>) {
         val coinsAdapter = CoinsAdapter(itemList)
+        coinsAdapter.stateRestorationPolicy =RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         coinsAdapter.setOnItemClickListener {
+            val currentCoin = itemList[it]
         }
         val recyclerView = binding.rvCoinList
         recyclerView.adapter = coinsAdapter

@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.coin_list.CoinListFragment">
-
-
-        <TextView
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCoinList"
@@ -21,5 +14,13 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/ltLoadingAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loadingAnimation.json"
+            app:lottie_loop="true" />
     </FrameLayout>
 </layout>
