@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">CryptoBerker</string>
     <string name="coins_list_placeholder">%1$d. %2$s - %3$s</string>
+    <string name="coins_detail_description_placeholder">    %1$s</string>
+    <string name="tags_header">TAGS</string>
+    <string name="events_header">EVENTS</string>
+    <string name="btn_extend">▼</string>
 
 </resources>
