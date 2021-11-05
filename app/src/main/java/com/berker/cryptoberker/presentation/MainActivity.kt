@@ -12,8 +12,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction()
-            .add(findViewById<FrameLayout>(R.id.fragmentHolder).id, CoinListFragment())
-            .commit()
     }
 }
