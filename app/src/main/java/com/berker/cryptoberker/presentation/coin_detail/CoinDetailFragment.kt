@@ -23,19 +23,33 @@ class CoinDetailFragment : BaseFragment<FragmentCoinDetailBinding>() {
         lifecycleScope.launchWhenCreated {
             viewModel.state.collectLatest {
                 binding.apply {
-                    if (it.isLoading) {
-                        ltLoadingAnimation.visibility = View.VISIBLE
-                    } else {
-                        ltLoadingAnimation.visibility = View.GONE
+                    it.apply {
+                        if (isLoading) {
+                            ltLoadingAnimation.visibility = View.VISIBLE
+                        } else {
+                            ltLoadingAnimation.visibility = View.GONE
+                        }
+                        if (coin != null) {
+                            tvCoinName.text = coin.name
+                        }
+                        if (error != "") {
+                            showErrorDialog(error)
+                        }
                     }
-                    if (it.coin != null) {
-                        tvCoinName.text = it.coin.name
-                    }
-                    if (it.error != "") {
-                        showDialog(
-                            "ERROR LOADING CONTENT",
-                            "Error while loading content, try again later. ${it.error}"
-                        )
+                }
+            }
+
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.eventState.collectLatest {
+                binding.apply {
+                    it.apply {
+                        if (events.isNotEmpty()) {
+                            tvCoinEvents.text = events[0].name
+                        }
+                        if (error != "") {
+                            showErrorDialog(error)
+                        }
                     }
                 }
             }

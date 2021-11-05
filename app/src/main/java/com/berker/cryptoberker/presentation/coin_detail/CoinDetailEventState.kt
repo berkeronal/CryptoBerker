@@ -1,10 +1,9 @@
 package com.berker.cryptoberker.presentation.coin_detail
 
-import com.berker.cryptoberker.domain.model.CoinDetail
 import com.berker.cryptoberker.domain.model.CoinEvent
 
-data class CoinDetailState(
+data class CoinDetailEventState(
     val isLoading: Boolean = false,
-    val coin: CoinDetail? = null,
     val error: String = "",
+    val events: List<CoinEvent> = emptyList(),
 )

@@ -48,10 +48,7 @@ class CoinListFragment : BaseFragment<FragmentCoinListBinding>() {
                     initRecyclerView(it.coins)
                 }
                 if (it.error != "") {
-                    showDialog(
-                        "ERROR LOADING CONTENT",
-                        "Error while loading content, try again later. ${it.error}"
-                    )
+                    showErrorDialog(it.error)
                 }
             }
         }

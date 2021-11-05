@@ -27,6 +27,16 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         initUi()
     }
 
+    protected fun Fragment.showErrorDialog(errorMessage: String) {
+        MaterialDialog(requireContext()).show {
+            cancelable(true)
+            cancelOnTouchOutside(true)
+            title(text = "ERROR LOADING CONTENT")
+            message(text = "Error while loading content, try again later. $errorMessage")
+            positiveButton(text = "Got it!")
+        }
+    }
+
     protected fun Fragment.showDialog(title: String, message: String) {
         MaterialDialog(requireContext()).show {
             cancelable(true)
